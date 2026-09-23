@@ -726,22 +726,283 @@ section{
   letter-spacing:2px;
 }
 
-/* ================= MUSIC ================= */
+/* ================= MUSIC PLAYER ================= */
 
-.music{
+.music-player{
   position:fixed;
   left:18px;
   bottom:18px;
   z-index:5000;
-  width:50px;
-  height:50px;
+
+  width:min(380px,calc(100vw - 36px));
+
+  padding:14px 16px;
+
+  border:1px solid rgba(201,168,91,.35);
+  border-radius:22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(30,30,30,.96),
+      rgba(5,5,5,.94)
+    );
+
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+
+  box-shadow:
+    0 20px 70px rgba(0,0,0,.65),
+    inset 0 1px rgba(255,255,255,.05);
+
+  direction:rtl;
+}
+
+.music-top{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.music-cover{
+  width:52px;
+  height:52px;
+  flex:none;
+
+  border-radius:14px;
+
+  background:
+    radial-gradient(circle at 35% 30%,#e0c47a,transparent 20%),
+    linear-gradient(145deg,#c9a85b,#73531f 55%,#111);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#fff;
+  font-family:'Amiri',serif;
+  font-size:25px;
+
+  border:1px solid rgba(255,255,255,.12);
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.5),
+    0 0 20px rgba(201,168,91,.08);
+}
+
+.music-info{
+  flex:1;
+  min-width:0;
+  text-align:right;
+}
+
+.music-title{
+  color:#fff;
+  font-size:14px;
+  font-weight:600;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.music-subtitle{
+  color:#888;
+  font-size:10px;
+  margin-top:3px;
+}
+
+.music-main{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.music-play{
+  width:45px;
+  height:45px;
+
+  flex:none;
+
   border-radius:50%;
-  border:1px solid rgba(201,168,91,.6);
-  background:rgba(0,0,0,.65);
-  backdrop-filter:blur(10px);
-  color:#c9a85b;
+  border:0;
+
+  background:#c9a85b;
+  color:#080808;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   cursor:pointer;
+
   font-size:18px;
+  font-weight:bold;
+
+  box-shadow:
+    0 7px 25px rgba(201,168,91,.22);
+
+  transition:.3s;
+}
+
+.music-play:hover{
+  transform:scale(1.06);
+}
+
+.music-play:active{
+  transform:scale(.95);
+}
+
+.music-controls{
+  margin-top:12px;
+}
+
+.music-progress-wrap{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.music-time{
+  color:#777;
+  font-size:9px;
+  min-width:31px;
+  direction:ltr;
+  text-align:center;
+}
+
+.music-range{
+  appearance:none;
+  -webkit-appearance:none;
+
+  width:100%;
+  height:4px;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      to right,
+      #c9a85b 0%,
+      #c9a85b var(--progress,0%),
+      rgba(255,255,255,.13) var(--progress,0%),
+      rgba(255,255,255,.13) 100%
+    );
+
+  outline:none;
+  cursor:pointer;
+}
+
+.music-range::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  appearance:none;
+
+  width:12px;
+  height:12px;
+
+  border-radius:50%;
+  border:2px solid #c9a85b;
+
+  background:#050505;
+
+  box-shadow:0 0 8px rgba(201,168,91,.35);
+}
+
+.music-range::-moz-range-thumb{
+  width:12px;
+  height:12px;
+
+  border-radius:50%;
+  border:2px solid #c9a85b;
+
+  background:#050505;
+}
+
+.music-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:9px;
+}
+
+.music-status{
+  color:#777;
+  font-size:9px;
+}
+
+.volume-wrap{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.volume-icon{
+  color:#999;
+  font-size:11px;
+}
+
+.volume-range{
+  width:65px;
+  height:3px;
+
+  appearance:none;
+  -webkit-appearance:none;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      to right,
+      #c9a85b 0%,
+      #c9a85b var(--volume,55%),
+      rgba(255,255,255,.13) var(--volume,55%),
+      rgba(255,255,255,.13) 100%
+    );
+
+  outline:none;
+  cursor:pointer;
+}
+
+.volume-range::-webkit-slider-thumb{
+  appearance:none;
+  -webkit-appearance:none;
+
+  width:9px;
+  height:9px;
+
+  border-radius:50%;
+  background:#c9a85b;
+}
+
+.volume-range::-moz-range-thumb{
+  width:9px;
+  height:9px;
+
+  border-radius:50%;
+  background:#c9a85b;
+  border:0;
+}
+
+/* Playing animation */
+
+.music-cover.playing{
+  animation:musicPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes musicPulse{
+  0%,100%{
+    transform:scale(1);
+    box-shadow:
+      0 8px 25px rgba(0,0,0,.5),
+      0 0 15px rgba(201,168,91,.08);
+  }
+
+  50%{
+    transform:scale(1.035);
+    box-shadow:
+      0 8px 25px rgba(0,0,0,.5),
+      0 0 30px rgba(201,168,91,.2);
+  }
 }
 
 /* ================= PROGRESS ================= */
@@ -811,6 +1072,43 @@ section{
 
   .typed{
     font-size:18px;
+  }
+
+  /* MUSIC MOBILE */
+
+  .music-player{
+    left:10px;
+    bottom:10px;
+
+    width:calc(100vw - 20px);
+
+    padding:12px 13px;
+
+    border-radius:20px;
+  }
+
+  .music-cover{
+    width:48px;
+    height:48px;
+    border-radius:13px;
+    font-size:23px;
+  }
+
+  .music-title{
+    font-size:13px;
+  }
+
+  .music-subtitle{
+    font-size:9px;
+  }
+
+  .music-play{
+    width:43px;
+    height:43px;
+  }
+
+  .volume-wrap{
+    display:none;
   }
 
 }
@@ -1219,14 +1517,107 @@ section{
 
 </main>
 
-<!-- MUSIC -->
-<button class="music" id="musicBtn" onclick="toggleMusic()">
-  ♪
-</button>
+
+<!-- ================= PREMIUM MUSIC PLAYER ================= -->
+
+<div class="music-player" id="musicPlayer">
+
+  <div class="music-top">
+
+    <div class="music-cover" id="musicCover">
+      ♪
+    </div>
+
+    <div class="music-info">
+
+      <div class="music-title">
+        حكاية حبيبة ❤️
+      </div>
+
+      <div class="music-subtitle">
+        A SPECIAL MEMORY • 2026
+      </div>
+
+    </div>
+
+    <div class="music-main">
+
+      <button
+        class="music-play"
+        id="musicBtn"
+        onclick="toggleMusic()"
+        aria-label="تشغيل الأغنية"
+      >
+        ▶
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="music-controls">
+
+    <div class="music-progress-wrap">
+
+      <span class="music-time" id="currentTime">
+        0:00
+      </span>
+
+      <input
+        type="range"
+        class="music-range"
+        id="musicProgress"
+        min="0"
+        max="100"
+        value="0"
+        step="0.1"
+        aria-label="تقدم الأغنية"
+      >
+
+      <span class="music-time" id="duration">
+        0:00
+      </span>
+
+    </div>
+
+
+    <div class="music-bottom">
+
+      <div class="music-status" id="musicStatus">
+        جاهزة للتشغيل 🎵
+      </div>
+
+      <div class="volume-wrap">
+
+        <span class="volume-icon">
+          🔊
+        </span>
+
+        <input
+          type="range"
+          class="volume-range"
+          id="volumeRange"
+          min="0"
+          max="1"
+          value=".55"
+          step=".01"
+          aria-label="مستوى الصوت"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
 
 <audio id="audio" loop preload="auto">
   <source src="kolo-yorkos.mp3" type="audio/mpeg">
 </audio>
+
 
 <script>
 
@@ -1237,47 +1628,226 @@ setTimeout(()=>{
 },6000);
 
 
-/* ================= MUSIC ================= */
+/* ================= PREMIUM MUSIC ================= */
 
 const audio=document.getElementById("audio");
+
 const musicBtn=document.getElementById("musicBtn");
+const musicCover=document.getElementById("musicCover");
+const musicProgress=document.getElementById("musicProgress");
+const currentTimeEl=document.getElementById("currentTime");
+const durationEl=document.getElementById("duration");
+const musicStatus=document.getElementById("musicStatus");
+const volumeRange=document.getElementById("volumeRange");
 
 let playing=false;
+let musicStarted=false;
 
-function startMusic(){
 
-  audio.volume=.55;
+/* Volume */
 
-  audio.play()
-  .then(()=>{
-    playing=true;
-    musicBtn.innerHTML="♫";
-  })
-  .catch(()=>{});
+audio.volume=.55;
+
+volumeRange.value=.55;
+
+function updateVolume(){
+
+  const value=parseFloat(volumeRange.value);
+
+  audio.volume=value;
+
+  volumeRange.style.setProperty(
+    "--volume",
+    (value*100)+"%"
+  );
 
 }
 
-window.addEventListener("click",()=>{
-  if(!playing) startMusic();
-},{once:true});
+updateVolume();
+
+volumeRange.addEventListener("input",updateVolume);
+
+
+/* Time format */
+
+function formatTime(seconds){
+
+  if(!isFinite(seconds) || seconds<0){
+    return "0:00";
+  }
+
+  const minutes=Math.floor(seconds/60);
+
+  const secs=Math.floor(seconds%60)
+    .toString()
+    .padStart(2,"0");
+
+  return minutes+":"+secs;
+
+}
+
+
+/* Audio duration */
+
+audio.addEventListener("loadedmetadata",()=>{
+
+  durationEl.innerText=
+    formatTime(audio.duration);
+
+});
+
+
+/* Progress */
+
+audio.addEventListener("timeupdate",()=>{
+
+  if(!audio.duration)return;
+
+  const percent=
+    (audio.currentTime/audio.duration)*100;
+
+  musicProgress.value=percent;
+
+  musicProgress.style.setProperty(
+    "--progress",
+    percent+"%"
+  );
+
+  currentTimeEl.innerText=
+    formatTime(audio.currentTime);
+
+});
+
+
+/* Seek */
+
+musicProgress.addEventListener("input",()=>{
+
+  if(!audio.duration)return;
+
+  const percent=
+    parseFloat(musicProgress.value);
+
+  audio.currentTime=
+    (percent/100)*audio.duration;
+
+});
+
+
+/* Start */
+
+function startMusic(){
+
+  audio.volume=parseFloat(volumeRange.value);
+
+  audio.play()
+  .then(()=>{
+
+    playing=true;
+    musicStarted=true;
+
+    musicBtn.innerHTML="❚❚";
+
+    musicCover.classList.add("playing");
+
+    musicStatus.innerText=
+      "بتشتغل دلوقتي 🎵";
+
+  })
+  .catch(()=>{
+
+    musicStatus.innerText=
+      "المس للصفحة لتشغيل الأغنية 🎵";
+
+  });
+
+}
+
+
+/* Stop */
+
+function pauseMusic(){
+
+  audio.pause();
+
+  playing=false;
+
+  musicBtn.innerHTML="▶";
+
+  musicCover.classList.remove("playing");
+
+  musicStatus.innerText=
+    "متوقفة مؤقتًا";
+
+}
+
+
+/* Toggle */
 
 function toggleMusic(){
 
   if(audio.paused){
 
-    audio.play();
-    playing=true;
-    musicBtn.innerHTML="♫";
+    startMusic();
 
   }else{
 
-    audio.pause();
-    playing=false;
-    musicBtn.innerHTML="♪";
+    pauseMusic();
 
   }
 
 }
+
+
+/* Try autoplay */
+
+window.addEventListener("load",()=>{
+
+  setTimeout(()=>{
+
+    startMusic();
+
+  },700);
+
+});
+
+
+/*
+  بعض المتصفحات تمنع تشغيل الصوت تلقائيًا.
+  أول ضغطة أو لمسة في الصفحة ستشغله تلقائيًا.
+*/
+
+function firstInteraction(){
+
+  if(!musicStarted){
+
+    startMusic();
+
+  }
+
+  document.removeEventListener(
+    "click",
+    firstInteraction
+  );
+
+  document.removeEventListener(
+    "touchstart",
+    firstInteraction
+  );
+
+}
+
+document.addEventListener(
+  "click",
+  firstInteraction,
+  {once:true}
+);
+
+document.addEventListener(
+  "touchstart",
+  firstInteraction,
+  {once:true}
+);
 
 
 /* ================= CHILD PHOTO ================= */
@@ -1499,17 +2069,6 @@ window.addEventListener("scroll",()=>{
   hero.style.transform=
     `translateY(${y*.15}px)`;
 
-});
-
-
-/* ================= FIRST INTERACTION MUSIC ================= */
-
-document.addEventListener("touchstart",()=>{
-
-  if(!playing) startMusic();
-
-},{
-  once:true
 });
 
 </script>
