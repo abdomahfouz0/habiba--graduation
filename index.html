@@ -1,1 +1,1735 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>حبيبة — يوم من العمر</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050507;
+    color:#fff;
+    font-family:'Cairo',sans-serif;
+    overflow-x:hidden;
+}
+
+button{
+    font-family:inherit;
+}
+
+:root{
+    --gold:#d7b56d;
+    --gold2:#f0d99b;
+    --cream:#f8f1df;
+    --dark:#050507;
+    --muted:#aaa6a0;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+section{
+    min-height:100vh;
+    width:100%;
+    position:relative;
+    overflow:hidden;
+}
+
+.center{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.gold{
+    color:var(--gold2);
+}
+
+.serif{
+    font-family:'Playfair Display',serif;
+}
+
+.small{
+    font-size:12px;
+    color:#aaa;
+    letter-spacing:2px;
+}
+
+/* =========================
+   LOADER
+========================= */
+
+#loader{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    background:#030304;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    transition:1.2s ease;
+}
+
+.loader-circle{
+    width:70px;
+    height:70px;
+    border:1px solid rgba(215,181,109,.2);
+    border-top-color:var(--gold);
+    border-radius:50%;
+    animation:spin 1.3s linear infinite;
+}
+
+.loader-text{
+    margin-top:25px;
+    font-size:11px;
+    letter-spacing:4px;
+    color:#aaa;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg);}
+}
+
+/* =========================
+   PASSWORD
+========================= */
+
+#lock{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:
+      radial-gradient(circle at center,rgba(215,181,109,.09),transparent 40%),
+      #050507;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+}
+
+.lock-box{
+    width:100%;
+    max-width:420px;
+}
+
+.lock-symbol{
+    width:75px;
+    height:75px;
+    border:1px solid rgba(215,181,109,.45);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+    color:var(--gold2);
+    font-size:28px;
+}
+
+.lock-box h1{
+    margin-top:30px;
+    font-size:34px;
+    font-weight:400;
+}
+
+.lock-box p{
+    margin-top:12px;
+    color:#aaa;
+    font-size:14px;
+    line-height:2;
+}
+
+.password{
+    margin-top:28px;
+    width:100%;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(215,181,109,.25);
+    padding:16px;
+    color:white;
+    text-align:center;
+    outline:none;
+    border-radius:8px;
+    font-size:18px;
+    letter-spacing:5px;
+}
+
+.enter{
+    width:100%;
+    margin-top:12px;
+    padding:15px;
+    background:linear-gradient(135deg,#d7b56d,#a8833d);
+    color:#080808;
+    border:0;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.error{
+    height:25px;
+    margin-top:10px;
+    color:#c97a7a;
+    font-size:12px;
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+.music{
+    position:fixed;
+    z-index:5000;
+    bottom:20px;
+    left:20px;
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    border:1px solid rgba(215,181,109,.5);
+    background:rgba(5,5,7,.7);
+    backdrop-filter:blur(10px);
+    color:var(--gold2);
+    cursor:pointer;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress{
+    position:fixed;
+    top:0;
+    right:0;
+    height:2px;
+    background:var(--gold);
+    width:0%;
+    z-index:6000;
+}
+
+/* =========================
+   STARS
+========================= */
+
+.stars{
+    position:absolute;
+    inset:0;
+    background-image:
+      radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1px);
+    background-size:90px 90px;
+    opacity:.13;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+#intro{
+    background:
+      radial-gradient(circle at center,rgba(215,181,109,.12),transparent 35%),
+      #050507;
+}
+
+.intro-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:30px;
+}
+
+.intro-small{
+    color:var(--gold);
+    font-size:11px;
+    letter-spacing:5px;
+    margin-bottom:25px;
+}
+
+.intro-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(50px,15vw,110px);
+    font-weight:400;
+    line-height:1;
+}
+
+.intro-line{
+    width:70px;
+    height:1px;
+    background:var(--gold);
+    margin:30px auto;
+}
+
+.intro-sub{
+    color:#c4c0b9;
+    font-size:15px;
+    line-height:2;
+}
+
+.scroll{
+    position:absolute;
+    bottom:35px;
+    font-size:10px;
+    color:#777;
+    letter-spacing:3px;
+}
+
+/* =========================
+   TYPING SECTION
+========================= */
+
+.story{
+    background:
+      linear-gradient(rgba(5,5,7,.88),rgba(5,5,7,.95)),
+      radial-gradient(circle at 50% 20%,rgba(215,181,109,.15),transparent 45%);
+}
+
+.story-inner{
+    max-width:800px;
+    padding:35px;
+    text-align:center;
+}
+
+.story-number{
+    color:var(--gold);
+    font-family:'Playfair Display',serif;
+    font-size:15px;
+    letter-spacing:5px;
+}
+
+.story h2{
+    font-size:clamp(30px,7vw,60px);
+    font-weight:400;
+    margin:25px 0;
+}
+
+.typing{
+    min-height:130px;
+    color:#ccc;
+    line-height:2.4;
+    font-size:16px;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline-section{
+    background:#08080a;
+    padding:90px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title span{
+    display:block;
+    color:var(--gold);
+    font-size:11px;
+    letter-spacing:4px;
+    margin-bottom:15px;
+}
+
+.section-title h2{
+    font-size:38px;
+    font-weight:400;
+}
+
+.timeline{
+    width:100%;
+    max-width:650px;
+    margin:auto;
+    position:relative;
+}
+
+.timeline:before{
+    content:'';
+    position:absolute;
+    top:0;
+    bottom:0;
+    right:50%;
+    width:1px;
+    background:linear-gradient(transparent,var(--gold),transparent);
+}
+
+.event{
+    width:50%;
+    padding:20px 30px;
+    position:relative;
+}
+
+.event:nth-child(odd){
+    margin-right:50%;
+    text-align:right;
+}
+
+.event:nth-child(even){
+    text-align:left;
+}
+
+.event:after{
+    content:'';
+    position:absolute;
+    width:9px;
+    height:9px;
+    background:var(--gold);
+    border-radius:50%;
+    top:29px;
+    box-shadow:0 0 20px var(--gold);
+}
+
+.event:nth-child(odd):after{
+    left:-5px;
+}
+
+.event:nth-child(even):after{
+    right:-5px;
+}
+
+.year{
+    color:var(--gold);
+    font-size:13px;
+    letter-spacing:2px;
+}
+
+.event h3{
+    margin-top:8px;
+    font-size:20px;
+    font-weight:500;
+}
+
+.event p{
+    color:#999;
+    font-size:13px;
+    line-height:2;
+    margin-top:7px;
+}
+
+/* =========================
+   QUESTION
+========================= */
+
+.question{
+    background:
+      radial-gradient(circle at center,rgba(215,181,109,.1),transparent 45%),
+      #050507;
+    text-align:center;
+    padding:30px;
+}
+
+.question-box{
+    max-width:700px;
+}
+
+.question h2{
+    font-size:clamp(27px,7vw,48px);
+    font-weight:400;
+    line-height:1.6;
+}
+
+.question p{
+    color:#aaa;
+    margin-top:15px;
+}
+
+.answers{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin-top:35px;
+}
+
+.answer{
+    padding:13px 20px;
+    border:1px solid rgba(215,181,109,.3);
+    background:transparent;
+    color:#ddd;
+    border-radius:50px;
+    cursor:pointer;
+}
+
+.answer:hover{
+    background:rgba(215,181,109,.1);
+}
+
+.answer-result{
+    min-height:60px;
+    margin-top:25px;
+    color:var(--gold2);
+    line-height:2;
+}
+
+/* =========================
+   BLACK CINEMA
+========================= */
+
+.cinema{
+    background:#000;
+    text-align:center;
+}
+
+.cinema-inner{
+    max-width:850px;
+    padding:30px;
+}
+
+.cinema-label{
+    color:#777;
+    font-size:10px;
+    letter-spacing:5px;
+}
+
+.cinema-text{
+    margin-top:35px;
+    font-family:'Playfair Display','Cairo',serif;
+    font-size:clamp(28px,7vw,55px);
+    line-height:1.9;
+    min-height:250px;
+}
+
+.cinema-sub{
+    color:#888;
+    font-size:13px;
+}
+
+/* =========================
+   PHOTO REVEAL
+========================= */
+
+.photo-section{
+    background:#020203;
+    padding:90px 20px;
+}
+
+.photo-card{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+}
+
+.photo-label{
+    color:var(--gold);
+    font-size:11px;
+    letter-spacing:4px;
+}
+
+.photo-title{
+    margin-top:15px;
+    font-size:32px;
+    font-weight:400;
+}
+
+.photo{
+    margin:45px auto;
+    width:min(88vw,600px);
+    border-radius:4px;
+    overflow:hidden;
+    border:1px solid rgba(215,181,109,.3);
+    box-shadow:0 30px 100px rgba(0,0,0,.8);
+}
+
+.photo img{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+.photo-caption{
+    max-width:600px;
+    margin:auto;
+    color:#aaa;
+    line-height:2.3;
+    font-size:14px;
+}
+
+/* =========================
+   BOOK
+========================= */
+
+.book-section{
+    background:#08080a;
+    padding:90px 20px;
+}
+
+.book{
+    width:min(90vw,420px);
+    height:530px;
+    margin:auto;
+    perspective:1500px;
+}
+
+.page{
+    width:100%;
+    height:100%;
+    background:
+      linear-gradient(135deg,#151310,#0b0b0b);
+    border:1px solid rgba(215,181,109,.35);
+    padding:45px 30px;
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    text-align:center;
+    box-shadow:0 30px 80px #000;
+}
+
+.page.active{
+    display:flex;
+    animation:pageIn .7s ease;
+}
+
+@keyframes pageIn{
+    from{opacity:0;transform:rotateY(-15deg) scale(.96)}
+    to{opacity:1;transform:none}
+}
+
+.page-number{
+    color:var(--gold);
+    font-size:11px;
+    letter-spacing:4px;
+}
+
+.page h3{
+    font-family:'Playfair Display',serif;
+    font-size:38px;
+    font-weight:400;
+    margin:25px 0;
+}
+
+.page p{
+    color:#aaa;
+    line-height:2.4;
+    font-size:14px;
+}
+
+.book-buttons{
+    text-align:center;
+    margin-top:25px;
+}
+
+.book-buttons button{
+    border:1px solid rgba(215,181,109,.4);
+    background:transparent;
+    color:#ddd;
+    padding:10px 20px;
+    margin:5px;
+    border-radius:30px;
+}
+
+/* =========================
+   CERTIFICATE
+========================= */
+
+.certificate-section{
+    background:#050507;
+    padding:100px 20px;
+}
+
+.certificate{
+    width:min(94vw,800px);
+    min-height:500px;
+    margin:auto;
+    padding:50px 30px;
+    border:1px solid var(--gold);
+    position:relative;
+    text-align:center;
+    background:
+      radial-gradient(circle,rgba(215,181,109,.08),transparent 55%),
+      #0b0b0d;
+}
+
+.certificate:before{
+    content:'✦';
+    position:absolute;
+    top:15px;
+    left:20px;
+    color:var(--gold);
+}
+
+.certificate:after{
+    content:'✦';
+    position:absolute;
+    bottom:15px;
+    right:20px;
+    color:var(--gold);
+}
+
+.cert-small{
+    color:var(--gold);
+    letter-spacing:5px;
+    font-size:10px;
+}
+
+.certificate h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(40px,10vw,75px);
+    font-weight:400;
+    margin:35px 0 10px;
+}
+
+.certificate h3{
+    font-weight:400;
+    color:#ddd;
+}
+
+.cert-date{
+    margin-top:40px;
+    color:#aaa;
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-section{
+    background:
+      radial-gradient(circle at top,rgba(215,181,109,.08),transparent 40%),
+      #060608;
+    padding:100px 20px;
+}
+
+.letter{
+    max-width:750px;
+    margin:auto;
+}
+
+.letter h2{
+    font-family:'Playfair Display',serif;
+    font-size:42px;
+    font-weight:400;
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.letter-body{
+    color:#c9c6c0;
+    line-height:2.6;
+    font-size:16px;
+    white-space:pre-line;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final{
+    background:#000;
+    text-align:center;
+}
+
+.final-content{
+    padding:30px;
+}
+
+.final-small{
+    color:#777;
+    letter-spacing:4px;
+    font-size:10px;
+}
+
+.final h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(48px,13vw,100px);
+    font-weight:400;
+    margin:30px 0;
+}
+
+.final-line{
+    width:100px;
+    height:1px;
+    background:var(--gold);
+    margin:25px auto;
+}
+
+.final p{
+    color:#aaa;
+    line-height:2.3;
+}
+
+.replay{
+    margin-top:35px;
+    padding:14px 30px;
+    border:1px solid rgba(215,181,109,.5);
+    background:transparent;
+    color:var(--gold2);
+    border-radius:40px;
+    cursor:pointer;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .timeline:before{
+        right:20px;
+    }
+
+    .event,
+    .event:nth-child(odd),
+    .event:nth-child(even){
+        width:100%;
+        margin:0;
+        padding-right:55px;
+        padding-left:15px;
+        text-align:right;
+    }
+
+    .event:after,
+    .event:nth-child(odd):after,
+    .event:nth-child(even):after{
+        right:16px;
+        left:auto;
+    }
+
+    .book{
+        height:500px;
+    }
+
+    .certificate{
+        min-height:440px;
+        padding:45px 20px;
+    }
+
+    .letter-body{
+        font-size:15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader">
+    <div class="loader-circle"></div>
+    <div class="loader-text">A LITTLE SURPRISE</div>
+</div>
+
+<div class="progress" id="progress"></div>
+
+<!-- PASSWORD -->
+
+<div id="lock">
+
+    <div class="lock-box">
+
+        <div class="lock-symbol">✦</div>
+
+        <h1>في حاجة صغيرة مستنياكي</h1>
+
+        <p>
+            مش كل يوم بيتكتب في العمر مرتين...
+            <br>
+            والنهارده يستاهل يتعمله حكاية.
+        </p>
+
+        <input
+            id="password"
+            class="password"
+            type="password"
+            placeholder="كلمة السر"
+            autocomplete="off"
+        >
+
+        <button class="enter" onclick="unlock()">
+            افتحي الحكاية
+        </button>
+
+        <div class="error" id="error"></div>
+
+    </div>
+
+</div>
+
+<audio id="music" preload="auto">
+    <source src="kolo-yorkos.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music" id="musicBtn" onclick="toggleMusic()">♫</button>
+
+
+<!-- INTRO -->
+
+<section id="intro" class="center">
+
+    <div class="stars"></div>
+
+    <div class="intro-content">
+
+        <div class="intro-small">
+            23 • 09 • 2026
+        </div>
+
+        <div class="intro-title">
+            حبيبة
+        </div>
+
+        <div class="intro-line"></div>
+
+        <div class="intro-sub">
+            النهارده مش مجرد يوم تخرج...
+            <br>
+            النهارده يوم يستاهل يتحفظ.
+        </div>
+
+    </div>
+
+    <div class="scroll">
+        SCROLL TO BEGIN
+    </div>
+
+</section>
+
+
+<!-- STORY -->
+
+<section class="story center">
+
+    <div class="story-inner">
+
+        <div class="story-number">
+            CHAPTER I
+        </div>
+
+        <h2>
+            الحكاية بدأت<br>
+            من زمان...
+        </h2>
+
+        <div class="typing" id="typing1"></div>
+
+    </div>
+
+</section>
+
+
+<!-- TIMELINE -->
+
+<section class="timeline-section">
+
+    <div class="section-title">
+        <span>THE JOURNEY</span>
+        <h2>رحلة حبيبة</h2>
+    </div>
+
+    <div class="timeline">
+
+        <div class="event">
+            <div class="year">29 / 03 / 2005</div>
+            <h3>البداية</h3>
+            <p>
+                يوم بدأت فيه حكاية بنت لسه محدش يعرف
+                هي هتوصل لفين.
+            </p>
+        </div>
+
+        <div class="event">
+            <div class="year">سنين الطفولة</div>
+            <h3>البنت الصغيرة</h3>
+            <p>
+                أحلام بسيطة، ضحكة بريئة،
+                وأيام كانت لسه بتكتب أول سطورها.
+            </p>
+        </div>
+
+        <div class="event">
+            <div class="year">المدرسة</div>
+            <h3>خطوة ورا خطوة</h3>
+            <p>
+                كل سنة كانت بتعدي وهي بتكبر،
+                ومع كل سنة كانت بتقرب أكتر من حلمها.
+            </p>
+        </div>
+
+        <div class="event">
+            <div class="year">الجامعة</div>
+            <h3>كلية التجارة</h3>
+            <p>
+                أربع سنين من الدراسة،
+                التعب، الضغط، المواقف والذكريات.
+            </p>
+        </div>
+
+        <div class="event">
+            <div class="year">23 / 09 / 2026</div>
+            <h3>يوم التخرج</h3>
+            <p>
+                اليوم اللي كل السنين اللي فاتت
+                اجتمعت فيه في لحظة واحدة.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- QUESTION -->
+
+<section class="question center">
+
+    <div class="question-box">
+
+        <div class="small">
+            A QUESTION FOR HER
+        </div>
+
+        <h2>
+            تفتكري الطفلة دي
+            كانت تتخيل إنها هتوصل للحظة دي؟
+        </h2>
+
+        <p>
+            اختاري أول إجابة جت في بالك...
+        </p>
+
+        <div class="answers">
+
+            <button class="answer"
+                onclick="answer('يمكن كانت بتحلم بحاجات أكبر من كده.')">
+                أكيد كانت بتحلم
+            </button>
+
+            <button class="answer"
+                onclick="answer('يمكن لأ... بس الأيام كانت بتحضرها للحظة دي.')">
+                مش عارفة
+            </button>
+
+            <button class="answer"
+                onclick="answer('يمكن كانت عارفة إنها هتنجح... بس مش عارفة شكل اللحظة دي.')">
+                أكيد
+            </button>
+
+        </div>
+
+        <div id="answerResult" class="answer-result"></div>
+
+    </div>
+
+</section>
+
+
+<!-- CINEMA -->
+
+<section class="cinema center">
+
+    <div class="cinema-inner">
+
+        <div class="cinema-label">
+            BEFORE THE PICTURES
+        </div>
+
+        <div id="cinemaText" class="cinema-text"></div>
+
+        <div class="cinema-sub">
+            خدي نفس...
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CHILD PHOTO -->
+
+<section class="photo-section center">
+
+    <div class="photo-card">
+
+        <div class="photo-label">
+            CHAPTER II
+        </div>
+
+        <div class="photo-title">
+            أول نسخة من الحكاية
+        </div>
+
+        <div class="photo">
+            <img
+                src="habiba-child.png.png"
+                alt="حبيبة"
+            >
+        </div>
+
+        <div class="photo-caption">
+            الصورة دي مش مجرد صورة قديمة...
+            دي دليل إن كل حاجة كبيرة بدأت من طفلة صغيرة
+            كان لسه قدامها عمر كامل تكتشفه.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GRADUATION PHOTO -->
+
+<section class="photo-section center">
+
+    <div class="photo-card">
+
+        <div class="photo-label">
+            CHAPTER III
+        </div>
+
+        <div class="photo-title">
+            ووصلنا...
+        </div>
+
+        <div class="photo">
+            <img
+                src="habiba-graduation.png.png"
+                alt="حبيبة في يوم التخرج"
+            >
+        </div>
+
+        <div class="photo-caption">
+            وبعد سنين...
+            نفس البنت واقفة النهارده
+            لابسة روب التخرج،
+            ومش بس خلصت مرحلة...
+            دي بدأت مرحلة جديدة بالكامل.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BOOK -->
+
+<section class="book-section">
+
+    <div class="section-title">
+
+        <span>MEMORY BOOK</span>
+
+        <h2>
+            أربع صفحات من العمر
+        </h2>
+
+    </div>
+
+    <div class="book">
+
+        <div class="page active">
+
+            <div class="page-number">
+                PAGE 01
+            </div>
+
+            <h3>2005</h3>
+
+            <p>
+                في يوم 29 مارس 2005
+                بدأت الحكاية.
+                <br><br>
+                محدش كان يعرف شكل المستقبل،
+                لكن صفحة جديدة كانت اتفتحت.
+            </p>
+
+        </div>
+
+        <div class="page">
+
+            <div class="page-number">
+                PAGE 02
+            </div>
+
+            <h3>كبرت</h3>
+
+            <p>
+                الطفلة كبرت...
+                <br><br>
+                الأحلام اتغيرت،
+                الدنيا كبرت،
+                والمسؤوليات زادت.
+                <br><br>
+                لكن الرحلة كملت.
+            </p>
+
+        </div>
+
+        <div class="page">
+
+            <div class="page-number">
+                PAGE 03
+            </div>
+
+            <h3>الجامعة</h3>
+
+            <p>
+                كلية التجارة —
+                جامعة عين شمس.
+                <br><br>
+                سنين فيها تعب،
+                امتحانات،
+                ضغط،
+                وذكريات عمرها ما هتتكرر بنفس الشكل.
+            </p>
+
+        </div>
+
+        <div class="page">
+
+            <div class="page-number">
+                PAGE 04
+            </div>
+
+            <h3>23 سبتمبر</h3>
+
+            <p>
+                اليوم اللي اتحولت فيه
+                كلمة "هتتخرج"
+                إلى
+                <br><br>
+                <strong class="gold">"اتخرجت".</strong>
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="book-buttons">
+
+        <button onclick="prevPage()">‹ السابق</button>
+
+        <button onclick="nextPage()">التالي ›</button>
+
+    </div>
+
+</section>
+
+
+<!-- CERTIFICATE -->
+
+<section class="certificate-section center">
+
+    <div class="certificate">
+
+        <div class="cert-small">
+            CERTIFICATE OF ACHIEVEMENT
+        </div>
+
+        <h2>حبيبة</h2>
+
+        <h3>
+            كلية التجارة — جامعة عين شمس
+        </h3>
+
+        <div class="cert-date">
+            احتفالًا بإتمام مرحلة جامعية
+            <br>
+            23 سبتمبر 2026
+        </div>
+
+        <div style="
+            margin-top:55px;
+            color:#777;
+            font-size:12px;
+            line-height:2;
+        ">
+            كل التعب اللي فات...
+            <br>
+            اتحول النهارده لذكرى تستاهل الفخر.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- LETTER -->
+
+<section class="letter-section">
+
+    <div class="letter">
+
+        <h2>
+            حبيبة...
+        </h2>
+
+        <div class="letter-body">
+
+النهارده مش مجرد يوم تخرج.
+
+النهارده اليوم اللي كل خطوة صغيرة،
+وكل مرة تعبتي فيها،
+وكل امتحان،
+وكل يوم قولتي فيه "لسه شوية وهخلص"...
+بقوا جزء من حكاية وصلت أخيرًا للحظة دي.
+
+يمكن وإنتِ واقفة النهارده
+مش حاسة قد إيه الطريق كان طويل.
+
+بس لو رجعنا لأول صفحة...
+للبنت الصغيرة اللي بدأت الحكاية سنة 2005...
+
+هنلاقي إنها وصلت لمكان
+يمكن كانت تتمنى توصله،
+لكن عمرها ما كانت تعرف
+شكل اللحظة وهي بتوصل.
+
+والنهارده...
+
+إنتِ مش بس خريجة.
+
+إنتِ واحدة قدرت تكمل.
+
+وقدرت توصل.
+
+وقدرت تقفل فصل كامل من حياتها
+وتفتح فصل جديد.
+
+فخلي اليوم ده دايمًا شاهد
+على إنك لما بدأتي...
+كمّلتي.
+
+ومهما كانت المرحلة الجاية مختلفة،
+افتكري إن البنت اللي وصلت لحد هنا
+تقدر تبدأ من جديد ألف مرة.
+
+مبروك يا حبيبة.
+
+على التخرج...
+وعلى كل حاجة جاية.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- NEW CHAPTER -->
+
+<section class="story center">
+
+    <div class="story-inner">
+
+        <div class="story-number">
+            CHAPTER IV
+        </div>
+
+        <h2>
+            مش النهاية...
+        </h2>
+
+        <div class="typing" id="typing2"></div>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL -->
+
+<section class="final center">
+
+    <div class="final-content">
+
+        <div class="final-small">
+            THE END OF ONE CHAPTER
+        </div>
+
+        <h2>
+            مبروك<br>
+            يا حبيبة
+        </h2>
+
+        <div class="final-line"></div>
+
+        <p>
+            من 29 مارس 2005
+            <br>
+            إلى 23 سبتمبر 2026
+            <br><br>
+            كانت رحلة...
+            <br>
+            والنهارده بدأت حكاية جديدة.
+        </p>
+
+        <button class="replay" onclick="location.reload()">
+            إعادة الحكاية
+        </button>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   LOADER
+========================= */
+
+window.addEventListener("load",function(){
+
+    setTimeout(function(){
+
+        document.getElementById("loader").style.opacity="0";
+
+        setTimeout(function(){
+            document.getElementById("loader").style.display="none";
+        },1200);
+
+    },700);
+
+});
+
+
+/* =========================
+   PASSWORD + MUSIC
+========================= */
+
+const correctPassword = "7ABiBA";
+
+const lock = document.getElementById("lock");
+const password = document.getElementById("password");
+const error = document.getElementById("error");
+const music = document.getElementById("music");
+
+function unlock(){
+
+    if(password.value === correctPassword){
+
+        lock.style.opacity="0";
+        lock.style.pointerEvents="none";
+
+        /*
+        المتصفح يسمح بتشغيل الصوت هنا
+        لأن الزائر ضغط على زر الدخول.
+        */
+
+        music.play().catch(()=>{});
+
+        setTimeout(()=>{
+            lock.style.display="none";
+        },900);
+
+    }else{
+
+        error.innerText="كلمة السر مش دي... جربي تاني.";
+
+        password.value="";
+
+        setTimeout(()=>{
+            error.innerText="";
+        },2000);
+
+    }
+
+}
+
+password.addEventListener("keydown",function(e){
+
+    if(e.key==="Enter"){
+        unlock();
+    }
+
+});
+
+
+/* =========================
+   MUSIC
+========================= */
+
+const musicBtn = document.getElementById("musicBtn");
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play().catch(()=>{});
+
+        musicBtn.innerText="♫";
+
+    }else{
+
+        music.pause();
+
+        musicBtn.innerText="×";
+
+    }
+
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+window.addEventListener("scroll",function(){
+
+    const scrollTop =
+        window.scrollY;
+
+    const height =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+    const percentage =
+        (scrollTop / height) * 100;
+
+    document.getElementById("progress").style.width =
+        percentage + "%";
+
+});
+
+
+/* =========================
+   TYPEWRITER
+========================= */
+
+function typeText(element,text,speed=45){
+
+    let i=0;
+
+    element.innerHTML="";
+
+    const timer=setInterval(()=>{
+
+        element.innerHTML += text.charAt(i);
+
+        i++;
+
+        if(i>=text.length){
+            clearInterval(timer);
+        }
+
+    },speed);
+
+}
+
+
+/* =========================
+   FIRST STORY
+========================= */
+
+const observer1 = new IntersectionObserver(
+
+(entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            typeText(
+                document.getElementById("typing1"),
+
+                "من يوم 29 مارس 2005 بدأت حكاية صغيرة... حكاية طفلة لسه الدنيا قدامها كلها. كبرت، اتعلمت، تعبت، ضحكت، عدت مراحل كتير... لحد ما وصلت لليوم اللي كانت كل الخطوات بتقودها ليه.",
+
+                32
+            );
+
+            observer1.disconnect();
+
+        }
+
+    });
+
+},{threshold:.4});
+
+observer1.observe(document.querySelector(".story"));
+
+
+/* =========================
+   CINEMA TEXT
+========================= */
+
+const cinemaObserver = new IntersectionObserver(
+
+(entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            typeText(
+
+                document.getElementById("cinemaText"),
+
+                "قبل ما تشوفي الصور... افتكري إن كل صورة فيها حكاية. الصورة الأولى لبنت لسه الطريق قدامها طويل... والصورة التانية لبنت وصلت. وبين الصورتين... عمر كامل.",
+
+                55
+
+            );
+
+            cinemaObserver.disconnect();
+
+        }
+
+    });
+
+},{threshold:.5});
+
+cinemaObserver.observe(document.querySelector(".cinema"));
+
+
+/* =========================
+   QUESTION
+========================= */
+
+function answer(text){
+
+    document.getElementById("answerResult").innerText = text;
+
+}
+
+
+/* =========================
+   BOOK
+========================= */
+
+let currentPage=0;
+
+const pages=document.querySelectorAll(".page");
+
+function showPage(){
+
+    pages.forEach((page,i)=>{
+
+        page.classList.toggle(
+            "active",
+            i===currentPage
+        );
+
+    });
+
+}
+
+function nextPage(){
+
+    currentPage++;
+
+    if(currentPage>=pages.length){
+        currentPage=0;
+    }
+
+    showPage();
+
+}
+
+function prevPage(){
+
+    currentPage--;
+
+    if(currentPage<0){
+        currentPage=pages.length-1;
+    }
+
+    showPage();
+
+}
+
+
+/* =========================
+   NEW CHAPTER
+========================= */
+
+const chapterObserver = new IntersectionObserver(
+
+(entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            typeText(
+
+                document.getElementById("typing2"),
+
+                "التخرج مش نقطة نهاية. هو مجرد باب بيتفتح. من النهارده في أحلام جديدة، طرق جديدة، أماكن جديدة، ونسخة جديدة من حبيبة لسه هتتعرف على نفسها أكتر.",
+
+                40
+
+            );
+
+            chapterObserver.disconnect();
+
+        }
+
+    });
+
+},{threshold:.5});
+
+chapterObserver.observe(
+    document.getElementById("typing2")
+);
+
+
+/* =========================
+   IMAGE FADE
+========================= */
+
+const images=document.querySelectorAll(".photo img");
+
+const imageObserver=new IntersectionObserver(
+
+(entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.style.opacity="0";
+
+            entry.target.style.transition="opacity 1.5s ease";
+
+            setTimeout(()=>{
+
+                entry.target.style.opacity="1";
+
+            },150);
+
+            imageObserver.unobserve(entry.target);
+
+        }
+
+    });
+
+},{threshold:.35});
+
+images.forEach(img=>{
+    imageObserver.observe(img);
+});
+
+
+/* =========================
+   KEYBOARD MUSIC
+========================= */
+
+document.addEventListener("keydown",function(e){
+
+    if(e.code==="Space" &&
+       document.activeElement !== password){
+
+        e.preventDefault();
+
+        toggleMusic();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
