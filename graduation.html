@@ -1,1 +1,1608 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
+<title>حكاية حبيبة — Graduation Cinema</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#050609;
+  color:#fff;
+  font-family:Cairo,sans-serif;
+  overflow-x:hidden;
+}
+
+button{
+  font-family:inherit;
+}
+
+section{
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* =========================
+   CINEMA INTRO
+========================= */
+
+#intro{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:#020204;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:opacity 1.5s,visibility 1.5s;
+}
+
+#intro.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.intro-content{
+  width:90%;
+  max-width:500px;
+  text-align:center;
+}
+
+.film-light{
+  width:5px;
+  height:5px;
+  background:#fff;
+  border-radius:50%;
+  box-shadow:0 0 80px 30px rgba(255,215,150,.35);
+  margin:auto;
+  opacity:.8;
+}
+
+.intro-small{
+  margin-top:45px;
+  color:#aaa;
+  letter-spacing:4px;
+  font-size:12px;
+  opacity:0;
+  animation:fadeIn 2s .5s forwards;
+}
+
+.intro-title{
+  margin-top:22px;
+  font-family:Amiri,serif;
+  font-size:48px;
+  color:#f2d29a;
+  opacity:0;
+  animation:fadeIn 2s 2s forwards;
+}
+
+.intro-line{
+  width:0;
+  height:1px;
+  background:#f2d29a;
+  margin:20px auto;
+  animation:lineGrow 1.5s 3.2s forwards;
+}
+
+.intro-last{
+  color:#ddd;
+  font-size:15px;
+  opacity:0;
+  animation:fadeIn 2s 4s forwards;
+}
+
+@keyframes fadeIn{
+  to{opacity:1}
+}
+
+@keyframes lineGrow{
+  to{width:150px}
+}
+
+/* =========================
+   PASSWORD
+========================= */
+
+#password{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at center,rgba(190,145,70,.12),transparent 35%),
+    #050609;
+}
+
+.lock{
+  width:90%;
+  max-width:430px;
+  text-align:center;
+}
+
+.lock-icon{
+  font-size:48px;
+  margin-bottom:25px;
+}
+
+.lock h1{
+  font-family:Amiri,serif;
+  font-size:38px;
+  color:#f0d39c;
+}
+
+.lock p{
+  color:#aaa;
+  margin:12px 0 30px;
+  line-height:2;
+}
+
+.pass-input{
+  width:100%;
+  height:58px;
+  border:1px solid rgba(240,211,156,.3);
+  background:rgba(255,255,255,.04);
+  color:#fff;
+  border-radius:15px;
+  text-align:center;
+  font-size:20px;
+  outline:none;
+  letter-spacing:4px;
+}
+
+.enter{
+  margin-top:15px;
+  width:100%;
+  height:56px;
+  border:0;
+  border-radius:15px;
+  background:linear-gradient(135deg,#f2d39c,#a97936);
+  color:#17110a;
+  font-weight:800;
+  font-size:17px;
+}
+
+.error{
+  color:#e78c8c;
+  margin-top:12px;
+  display:none;
+}
+
+/* =========================
+   COMMON
+========================= */
+
+.gold{
+  color:#f0d39c;
+}
+
+.eyebrow{
+  color:#b99b67;
+  letter-spacing:3px;
+  font-size:11px;
+  margin-bottom:15px;
+}
+
+.title{
+  font-family:Amiri,serif;
+  font-size:48px;
+  line-height:1.3;
+  margin-bottom:20px;
+}
+
+.subtitle{
+  max-width:650px;
+  color:#c7c7c7;
+  line-height:2.1;
+  font-size:16px;
+}
+
+.center{
+  text-align:center;
+}
+
+.container{
+  width:90%;
+  max-width:1050px;
+  margin:auto;
+}
+
+/* =========================
+   HERO
+========================= */
+
+#hero{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(240,210,155,.13),transparent 30%),
+    linear-gradient(#07080c,#030406);
+}
+
+.hero-stars{
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(#fff 1px,transparent 1px),
+    radial-gradient(#e5c17b 1px,transparent 1px);
+  background-size:100px 100px,170px 170px;
+  opacity:.25;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:30px 15px;
+}
+
+.hero-date{
+  color:#aaa;
+  letter-spacing:4px;
+  font-size:12px;
+  margin-bottom:25px;
+}
+
+.hero h1{
+  font-family:Amiri,serif;
+  font-size:clamp(55px,15vw,105px);
+  color:#f0d39c;
+  text-shadow:0 0 40px rgba(240,211,156,.15);
+}
+
+.hero h2{
+  font-size:20px;
+  font-weight:400;
+  margin-top:5px;
+}
+
+.hero-text{
+  margin:28px auto;
+  max-width:600px;
+  color:#aaa;
+  line-height:2;
+}
+
+.scroll{
+  margin-top:55px;
+  color:#888;
+  font-size:11px;
+  letter-spacing:3px;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+#timeline{
+  background:#08090d;
+}
+
+.timeline{
+  margin-top:45px;
+  position:relative;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:50%;
+  width:1px;
+  background:linear-gradient(transparent,#b9975b,transparent);
+}
+
+.event{
+  width:45%;
+  padding:25px;
+  margin-bottom:35px;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(240,211,156,.1);
+  border-radius:20px;
+}
+
+.event:nth-child(odd){
+  margin-right:auto;
+  margin-left:5%;
+}
+
+.event:nth-child(even){
+  margin-left:auto;
+  margin-right:5%;
+}
+
+.event .year{
+  color:#e3c48e;
+  font-size:13px;
+  letter-spacing:2px;
+}
+
+.event h3{
+  margin:10px 0;
+  font-family:Amiri,serif;
+  font-size:25px;
+}
+
+.event p{
+  color:#aaa;
+  line-height:2;
+  font-size:14px;
+}
+
+/* =========================
+   QUESTION
+========================= */
+
+#question{
+  background:
+    radial-gradient(circle,#151116,#050609 65%);
+}
+
+.question-box{
+  width:90%;
+  max-width:700px;
+  text-align:center;
+}
+
+.question-box h2{
+  font-family:Amiri,serif;
+  font-size:36px;
+  line-height:1.7;
+}
+
+.answers{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:35px;
+}
+
+.answer{
+  border:1px solid #705b3c;
+  background:rgba(255,255,255,.03);
+  color:#eee;
+  padding:14px 20px;
+  border-radius:30px;
+}
+
+.answer-result{
+  min-height:40px;
+  margin-top:25px;
+  color:#f0d39c;
+  line-height:2;
+}
+
+/* =========================
+   CHILD PHOTO
+========================= */
+
+#childScene{
+  background:#000;
+}
+
+.photo-scene{
+  width:90%;
+  max-width:900px;
+  text-align:center;
+}
+
+.photo-message{
+  min-height:130px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:Amiri,serif;
+  font-size:28px;
+  line-height:1.8;
+  color:#eee;
+}
+
+.photo-frame{
+  margin:30px auto;
+  width:min(80vw,390px);
+  aspect-ratio:3/4;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid rgba(240,211,156,.35);
+  box-shadow:0 0 70px rgba(240,211,156,.08);
+  opacity:0;
+  transform:scale(.96);
+  transition:1.5s;
+}
+
+.photo-frame.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+.photo-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* =========================
+   TRANSITION
+========================= */
+
+#transition{
+  background:#000;
+}
+
+.transition-text{
+  font-family:Amiri,serif;
+  font-size:35px;
+  line-height:2;
+  text-align:center;
+  max-width:700px;
+}
+
+/* =========================
+   GRAD PHOTO
+========================= */
+
+#graduation{
+  background:
+    radial-gradient(circle at center,rgba(240,211,156,.1),transparent 35%),
+    #050609;
+}
+
+.graduation-photo{
+  width:min(85vw,450px);
+  border-radius:25px;
+  border:1px solid rgba(240,211,156,.4);
+  box-shadow:0 30px 100px rgba(0,0,0,.8);
+}
+
+.grad-caption{
+  margin-top:30px;
+  font-family:Amiri,serif;
+  font-size:27px;
+  color:#f0d39c;
+}
+
+/* =========================
+   BOOK
+========================= */
+
+#bookSection{
+  background:#07080b;
+}
+
+.book{
+  width:min(90vw,650px);
+  min-height:390px;
+  perspective:1500px;
+  margin:30px auto;
+}
+
+.book-page{
+  min-height:390px;
+  padding:45px 30px;
+  background:
+    linear-gradient(135deg,#16120c,#0d0d0d);
+  border:1px solid rgba(240,211,156,.3);
+  border-radius:10px;
+  box-shadow:0 30px 80px #000;
+  text-align:center;
+  display:none;
+}
+
+.book-page.active{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  animation:pageIn .6s;
+}
+
+@keyframes pageIn{
+  from{opacity:0;transform:rotateY(20deg) scale(.96)}
+  to{opacity:1;transform:none}
+}
+
+.page-number{
+  color:#a88a58;
+  margin-bottom:25px;
+}
+
+.book-page h2{
+  font-family:Amiri,serif;
+  font-size:36px;
+  color:#f0d39c;
+  margin-bottom:20px;
+}
+
+.book-page p{
+  color:#ccc;
+  line-height:2.2;
+}
+
+.book-controls{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+}
+
+.book-btn{
+  border:1px solid #8c7045;
+  background:transparent;
+  color:#fff;
+  padding:12px 22px;
+  border-radius:30px;
+}
+
+/* =========================
+   CERTIFICATE
+========================= */
+
+#certificate{
+  background:#050609;
+}
+
+.certificate{
+  width:90%;
+  max-width:700px;
+  padding:50px 25px;
+  text-align:center;
+  border:2px solid #a98954;
+  outline:1px solid rgba(240,211,156,.25);
+  outline-offset:8px;
+  background:
+    radial-gradient(circle,rgba(240,211,156,.08),transparent 60%);
+}
+
+.certificate small{
+  color:#aaa;
+  letter-spacing:3px;
+}
+
+.certificate h2{
+  font-family:Amiri,serif;
+  font-size:55px;
+  color:#f0d39c;
+  margin:25px 0 5px;
+}
+
+.certificate h3{
+  font-size:19px;
+  font-weight:400;
+}
+
+.certificate p{
+  color:#aaa;
+  margin-top:25px;
+  line-height:2;
+}
+
+/* =========================
+   STARS
+========================= */
+
+#starsSection{
+  background:#020308;
+}
+
+.star-field{
+  width:90%;
+  max-width:700px;
+  text-align:center;
+}
+
+.stars{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:30px;
+  margin-top:45px;
+}
+
+.star{
+  font-size:25px;
+  color:#f0d39c;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.star:hover{
+  transform:scale(1.4);
+}
+
+.star-message{
+  margin-top:30px;
+  min-height:50px;
+  color:#ddd;
+  line-height:2;
+}
+
+/* =========================
+   LETTER
+========================= */
+
+#letter{
+  background:
+    radial-gradient(circle at center,#17120d,#040508 65%);
+}
+
+.letter{
+  width:90%;
+  max-width:750px;
+  text-align:right;
+  padding:45px 30px;
+  border-right:2px solid #a88851;
+  background:rgba(255,255,255,.025);
+}
+
+.letter h2{
+  font-family:Amiri,serif;
+  font-size:42px;
+  color:#f0d39c;
+  margin-bottom:25px;
+}
+
+#typedLetter{
+  color:#ddd;
+  font-size:17px;
+  line-height:2.5;
+  white-space:pre-line;
+}
+
+/* =========================
+   SECRET
+========================= */
+
+#secret{
+  background:#000;
+}
+
+.secret-btn{
+  border:1px solid #a98954;
+  background:transparent;
+  color:#f0d39c;
+  padding:17px 30px;
+  border-radius:50px;
+  font-size:16px;
+}
+
+.secret-text{
+  max-width:650px;
+  margin-top:35px;
+  color:#ddd;
+  line-height:2.4;
+  font-family:Amiri,serif;
+  font-size:24px;
+  display:none;
+}
+
+.secret-text.show{
+  display:block;
+  animation:fadeIn 1.5s;
+}
+
+/* =========================
+   GIFT
+========================= */
+
+#gift{
+  background:#050609;
+}
+
+.gift-box{
+  text-align:center;
+}
+
+.gift{
+  width:170px;
+  height:130px;
+  margin:35px auto;
+  position:relative;
+  cursor:pointer;
+}
+
+.gift-body{
+  position:absolute;
+  left:10px;
+  right:10px;
+  bottom:0;
+  height:90px;
+  background:linear-gradient(135deg,#b89052,#6c4c25);
+  border-radius:5px;
+}
+
+.gift-ribbon{
+  position:absolute;
+  left:70px;
+  width:30px;
+  height:130px;
+  background:#f0d39c;
+  z-index:2;
+}
+
+.gift-lid{
+  position:absolute;
+  left:0;
+  right:0;
+  top:20px;
+  height:30px;
+  background:#d0a966;
+  z-index:3;
+  border-radius:5px;
+  transition:1s;
+}
+
+.gift.open .gift-lid{
+  transform:translateY(-90px) rotate(-8deg);
+}
+
+.gift-message{
+  display:none;
+  font-family:Amiri,serif;
+  color:#f0d39c;
+  font-size:28px;
+  line-height:2;
+}
+
+.gift-message.show{
+  display:block;
+  animation:fadeIn 1.5s;
+}
+
+/* =========================
+   END
+========================= */
+
+#ending{
+  min-height:100vh;
+  background:#000;
+}
+
+.end{
+  text-align:center;
+  width:90%;
+}
+
+.end-title{
+  font-family:Amiri,serif;
+  font-size:55px;
+  color:#f0d39c;
+}
+
+.end-sub{
+  color:#999;
+  margin:20px 0 50px;
+}
+
+.credits{
+  color:#777;
+  line-height:2.2;
+  font-size:12px;
+}
+
+.final-line{
+  margin-top:45px;
+  color:#fff;
+  font-family:Amiri,serif;
+  font-size:27px;
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+.music{
+  position:fixed;
+  bottom:18px;
+  left:18px;
+  z-index:500;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid rgba(240,211,156,.5);
+  background:rgba(0,0,0,.7);
+  color:#f0d39c;
+  font-size:18px;
+  display:none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:650px){
+
+  .title{
+    font-size:39px;
+  }
+
+  .hero h2{
+    font-size:16px;
+  }
+
+  .timeline:before{
+    right:15px;
+  }
+
+  .event,
+  .event:nth-child(odd),
+  .event:nth-child(even){
+    width:calc(100% - 40px);
+    margin-right:40px;
+    margin-left:0;
+  }
+
+  .question-box h2{
+    font-size:29px;
+  }
+
+  .photo-message{
+    font-size:23px;
+  }
+
+  .transition-text{
+    font-size:28px;
+  }
+
+  .certificate h2{
+    font-size:44px;
+  }
+
+  .stars{
+    gap:20px;
+  }
+
+  .letter h2{
+    font-size:35px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+  <div class="intro-content">
+    <div class="film-light"></div>
+    <div class="intro-small">A SPECIAL STORY</div>
+    <div class="intro-title">حكاية حبيبة</div>
+    <div class="intro-line"></div>
+    <div class="intro-last">مش مجرد يوم تخرج...</div>
+  </div>
+</div>
+
+<!-- PASSWORD -->
+<section id="password">
+  <div class="lock">
+    <div class="lock-icon">🔐</div>
+    <div class="eyebrow">PRIVATE CINEMA</div>
+    <h1>قبل ما تبدأ الحكاية...</h1>
+    <p>
+      في حاجة معمولة مخصوص ليكي.<br>
+      بس لازم الأول تثبتي إنك حبيبة.
+    </p>
+
+    <input
+      id="pass"
+      class="pass-input"
+      type="password"
+      placeholder="اكتبي الباسورد"
+    >
+
+    <button class="enter" onclick="enterSite()">
+      🎬 دخول إلى الحكاية
+    </button>
+
+    <div id="error" class="error">
+      الباسورد مش صح... جربي تاني ❤️
+    </div>
+  </div>
+</section>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-stars"></div>
+
+  <div class="hero-content">
+    <div class="hero-date">23 • 09 • 2026</div>
+
+    <div class="eyebrow">THE GRADUATION STORY</div>
+
+    <h1>حبيبة</h1>
+
+    <h2>خريجة كلية التجارة — جامعة عين شمس</h2>
+
+    <p class="hero-text">
+      النهارده مش يوم عادي...<br>
+      النهارده اليوم اللي حلم قديم بقى حقيقة.
+    </p>
+
+    <div class="scroll">
+      ↓ انزلي وابدئي الحكاية ↓
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="container center">
+
+    <div class="eyebrow">FROM THE BEGINNING</div>
+    <h2 class="title">21 سنة من الحكاية</h2>
+
+    <p class="subtitle">
+      من أول يوم بدأت فيه الحكاية... لحد اللحظة اللي وصلتي فيها للقب
+      <span class="gold">خريجة</span>.
+    </p>
+
+    <div class="timeline">
+
+      <div class="event">
+        <div class="year">29 مارس 2005</div>
+        <h3>الفصل الأول — البداية</h3>
+        <p>
+          في اليوم ده بدأت حكاية بنت صغيرة،
+          ولسه محدش كان يعرف هي هتبقى مين.
+        </p>
+      </div>
+
+      <div class="event">
+        <div class="year">سنين الطفولة</div>
+        <h3>كبرت الحكاية</h3>
+        <p>
+          أيام عدّت، أحلام كبرت، وشخصية بدأت تتكوّن
+          خطوة ورا خطوة.
+        </p>
+      </div>
+
+      <div class="event">
+        <div class="year">سنين الجامعة</div>
+        <h3>الفصل الأصعب</h3>
+        <p>
+          محاضرات، امتحانات، ضغط، تعب...
+          وكل ده كان بيقربها من اللحظة دي.
+        </p>
+      </div>
+
+      <div class="event">
+        <div class="year">23 سبتمبر 2026</div>
+        <h3>الفصل اللي اتكتب النهارده</h3>
+        <p>
+          حبيبة بقت خريجة كلية التجارة — جامعة عين شمس.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUESTION -->
+<section id="question">
+  <div class="question-box">
+
+    <div class="eyebrow">A LITTLE QUESTION</div>
+
+    <h2>
+      تفتكري الطفلة اللي بدأت الحكاية دي...
+      كانت تتخيل إنها هتوصل لليوم ده؟
+    </h2>
+
+    <div class="answers">
+      <button class="answer" onclick="answer('maybe')">يمكن ❤️</button>
+      <button class="answer" onclick="answer('no')">مستحيل 😂</button>
+      <button class="answer" onclick="answer('yes')">أكيد كانت واثقة ✨</button>
+    </div>
+
+    <div id="answerResult" class="answer-result"></div>
+
+  </div>
+</section>
+
+<!-- CHILD SCENE -->
+<section id="childScene">
+
+  <div class="photo-scene">
+
+    <div class="eyebrow">CHAPTER ONE</div>
+
+    <div id="childMessage" class="photo-message">
+      البنت دي...
+    </div>
+
+    <div class="photo-frame" id="childFrame">
+      <img src="habiba-child.png.png" alt="حبيبة في البداية">
+    </div>
+
+  </div>
+
+</section>
+
+<!-- TRANSITION -->
+<section id="transition">
+
+  <div class="transition-text">
+    <div>وكان قدامها طريق طويل...</div>
+    <div>سنين هتعدي...</div>
+    <div>وأحلام هتكبر...</div>
+    <br>
+    <div class="gold">لحد ما وصلنا لليوم ده.</div>
+  </div>
+
+</section>
+
+<!-- GRADUATION -->
+<section id="graduation">
+
+  <div class="container center">
+
+    <div class="eyebrow">THE MOMENT</div>
+
+    <img
+      class="graduation-photo"
+      src="habiba-graduation.png.png"
+      alt="حبيبة يوم التخرج"
+    >
+
+    <div class="grad-caption">
+      والنهارده... الحلم بقى حقيقة. 🎓
+    </div>
+
+    <p class="subtitle" style="margin:20px auto">
+      مبروك يا حبيبة ❤️
+    </p>
+
+  </div>
+
+</section>
+
+<!-- BOOK -->
+<section id="bookSection">
+
+  <div class="container center">
+
+    <div class="eyebrow">HER STORY</div>
+    <h2 class="title">كتاب الحكاية</h2>
+
+    <div class="book">
+
+      <div class="book-page active">
+        <div class="page-number">01 / 04</div>
+        <h2>29 مارس 2005</h2>
+        <p>
+          أول صفحة في الحكاية.<br>
+          يوم بدأت فيه حياة بنت صغيرة...
+          ولسه المستقبل مخبي لها كتير.
+        </p>
+      </div>
+
+      <div class="book-page">
+        <div class="page-number">02 / 04</div>
+        <h2>كبرت الحكاية</h2>
+        <p>
+          الطفولة عدت، والأيام جريت،
+          وكل سنة كانت بتضيف حاجة جديدة لشخصيتها.
+        </p>
+      </div>
+
+      <div class="book-page">
+        <div class="page-number">03 / 04</div>
+        <h2>سنين الجامعة</h2>
+        <p>
+          الطريق مكنش كله سهل...
+          لكن كل امتحان وكل تعب كان بيكتب صفحة جديدة.
+        </p>
+      </div>
+
+      <div class="book-page">
+        <div class="page-number">04 / 04</div>
+        <h2>23 سبتمبر 2026</h2>
+        <p>
+          الصفحة اللي اتكتبت النهارده:
+          <br><br>
+          <strong class="gold">حبيبة — خريجة.</strong>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="book-controls">
+      <button class="book-btn" onclick="prevPage()">← السابق</button>
+      <button class="book-btn" onclick="nextPage()">التالي →</button>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CERTIFICATE -->
+<section id="certificate">
+
+  <div class="certificate">
+
+    <small>OFFICIAL MEMORY</small>
+
+    <h2>حبيبة</h2>
+
+    <h3>كلية التجارة — جامعة عين شمس</h3>
+
+    <p>
+      بكل فخر وامتنان، يتم تسجيل هذه اللحظة
+      كواحدة من أجمل فصول الحكاية.
+      <br><br>
+      <span class="gold">23 سبتمبر 2026</span>
+    </p>
+
+    <p>
+      Graduation Day
+    </p>
+
+  </div>
+
+</section>
+
+<!-- STARS -->
+<section id="starsSection">
+
+  <div class="star-field">
+
+    <div class="eyebrow">A SKY FULL OF MEMORIES</div>
+
+    <h2 class="title">اختاري نجمة</h2>
+
+    <p class="subtitle">
+      كل نجمة وراها كلمة صغيرة.
+    </p>
+
+    <div class="stars">
+      <div class="star" onclick="star(0)">✦</div>
+      <div class="star" onclick="star(1)">✦</div>
+      <div class="star" onclick="star(2)">✦</div>
+      <div class="star" onclick="star(3)">✦</div>
+      <div class="star" onclick="star(4)">✦</div>
+      <div class="star" onclick="star(5)">✦</div>
+      <div class="star" onclick="star(6)">✦</div>
+      <div class="star" onclick="star(7)">✦</div>
+      <div class="star" onclick="star(8)">✦</div>
+      <div class="star" onclick="star(9)">✦</div>
+    </div>
+
+    <div id="starMessage" class="star-message"></div>
+
+  </div>
+
+</section>
+
+<!-- LETTER -->
+<section id="letter">
+
+  <div class="letter">
+
+    <div class="eyebrow">A LETTER FOR YOU</div>
+
+    <h2>حبيبة،</h2>
+
+    <div id="typedLetter"></div>
+
+  </div>
+
+</section>
+
+<!-- SECRET -->
+<section id="secret">
+
+  <div class="container center">
+
+    <div class="eyebrow">ONE LAST THING</div>
+
+    <h2 class="title">في حاجة لسه متقالتش...</h2>
+
+    <button class="secret-btn" onclick="openSecret()">
+      افتحي الرسالة ❤️
+    </button>
+
+    <div id="secretText" class="secret-text">
+      أكتر حاجة جميلة في الصورة دي...
+      إن البنت اللي فيها ما كانتش تعرف وقتها
+      قد إيه هتكون اللحظة دي مهمة.
+      <br><br>
+      والنهارده، وأنا شايفك وصلتي،
+      أتمنى كل خطوة جاية في حياتك تكون أجمل
+      من اللي قبلها.
+    </div>
+
+  </div>
+
+</section>
+
+<!-- GIFT -->
+<section id="gift">
+
+  <div class="gift-box">
+
+    <div class="eyebrow">A LITTLE GIFT</div>
+
+    <h2 class="title">آخر مفاجأة</h2>
+
+    <p class="subtitle">
+      اضغطي على الهدية...
+    </p>
+
+    <div class="gift" id="giftBox" onclick="openGift()">
+      <div class="gift-body"></div>
+      <div class="gift-ribbon"></div>
+      <div class="gift-lid"></div>
+    </div>
+
+    <div id="giftMessage" class="gift-message">
+      <div>مبروك يا حبيبة 🎓❤️</div>
+      <div>دي مش نهاية الحكاية...</div>
+      <div>دي بداية أجمل فصل فيها.</div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ENDING -->
+<section id="ending">
+
+  <div class="end">
+
+    <div class="eyebrow">THE END</div>
+
+    <div class="end-title">
+      حكاية حبيبة
+    </div>
+
+    <div class="end-sub">
+      A Graduation Story — 2026
+    </div>
+
+    <div class="credits">
+      Written for: حبيبة<br>
+      Starring: حبيبة<br>
+      Chapter: Graduation<br>
+      Date: 23 September 2026
+    </div>
+
+    <div class="final-line">
+      النهاية؟
+      <br>
+      لا... دي بداية أحلى فصل. ❤️
+    </div>
+
+  </div>
+
+</section>
+
+<!-- MUSIC -->
+<button class="music" id="musicBtn" onclick="toggleMusic()">♫</button>
+
+<audio id="musicAudio" loop preload="auto">
+  <source src="kolo-yorkos.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* =========================
+   INTRO
+========================= */
+
+setTimeout(()=>{
+  document.getElementById("intro").classList.add("hide");
+},6000);
+
+
+/* =========================
+   PASSWORD + MUSIC
+========================= */
+
+function enterSite(){
+
+  const input=document.getElementById("pass");
+  const error=document.getElementById("error");
+  const audio=document.getElementById("musicAudio");
+
+  if(input.value==="7ABiBA"){
+
+    error.style.display="none";
+
+    document.getElementById("password")
+      .scrollIntoView({behavior:"smooth"});
+
+    audio.volume=.55;
+
+    // تشغيل الأغنية بعد الضغط على زر الدخول
+    audio.play().catch(()=>{});
+
+    document.getElementById("musicBtn").style.display="block";
+
+    setTimeout(()=>{
+      document.getElementById("hero")
+        .scrollIntoView({behavior:"smooth"});
+    },500);
+
+  }else{
+
+    error.style.display="block";
+
+    input.value="";
+    input.focus();
+  }
+}
+
+document.getElementById("pass").addEventListener("keydown",e=>{
+  if(e.key==="Enter") enterSite();
+});
+
+
+/* =========================
+   MUSIC
+========================= */
+
+function toggleMusic(){
+
+  const audio=document.getElementById("musicAudio");
+
+  if(audio.paused){
+    audio.play();
+    document.getElementById("musicBtn").textContent="♫";
+  }else{
+    audio.pause();
+    document.getElementById("musicBtn").textContent="🔇";
+  }
+
+}
+
+
+/* =========================
+   QUESTION
+========================= */
+
+function answer(type){
+
+  const result=document.getElementById("answerResult");
+
+  if(type==="maybe"){
+    result.textContent=
+    "يمكن... بس الأكيد إنها كانت تستاهل توصل ❤️";
+  }
+
+  if(type==="no"){
+    result.textContent=
+    "ولا يهمك... المهم إنها وصلت، وده الأجمل ✨";
+  }
+
+  if(type==="yes"){
+    result.textContent=
+    "يبقى كانت عارفة من بدري إنها معمولة للحظة دي 🎓";
+  }
+}
+
+
+/* =========================
+   CHILD PHOTO MESSAGE
+========================= */
+
+const childMessages=[
+  "البنت دي...",
+  "كان عندها أحلام صغيرة.",
+  "وكان قدامها طريق طويل.",
+  "ومكنتش تعرف لسه...",
+  "إنها في يوم من الأيام هتبقى هنا."
+];
+
+let messageIndex=0;
+
+const childMessage=document.getElementById("childMessage");
+const childFrame=document.getElementById("childFrame");
+
+function childSequence(){
+
+  if(messageIndex<childMessages.length){
+
+    childMessage.style.opacity=0;
+
+    setTimeout(()=>{
+
+      childMessage.textContent=childMessages[messageIndex];
+      childMessage.style.opacity=1;
+
+      messageIndex++;
+
+      setTimeout(childSequence,1700);
+
+    },500);
+
+  }else{
+
+    setTimeout(()=>{
+      childFrame.classList.add("show");
+    },500);
+
+  }
+}
+
+let childStarted=false;
+
+const observer=new IntersectionObserver(entries=>{
+
+  entries.forEach(entry=>{
+
+    if(entry.isIntersecting && !childStarted){
+
+      childStarted=true;
+      childSequence();
+
+    }
+
+  });
+
+},{threshold:.45});
+
+observer.observe(document.getElementById("childScene"));
+
+
+/* =========================
+   BOOK
+========================= */
+
+let page=0;
+
+const pages=document.querySelectorAll(".book-page");
+
+function showPage(){
+
+  pages.forEach((p,i)=>{
+    p.classList.toggle("active",i===page);
+  });
+
+}
+
+function nextPage(){
+
+  if(page<pages.length-1){
+    page++;
+    showPage();
+  }
+
+}
+
+function prevPage(){
+
+  if(page>0){
+    page--;
+    showPage();
+  }
+
+}
+
+
+/* =========================
+   STARS
+========================= */
+
+const starMessages=[
+  "إنتي قدها من زمان.",
+  "النهارده تستاهلي تفرحي بنفسك.",
+  "كل تعب فات كان ليه معنى.",
+  "خليكي دايمًا فخورة بالبنت دي.",
+  "اللي جاي ممكن يكون أجمل.",
+  "مبروك على كل خطوة وصلتي لها.",
+  "دي مش نهاية الطريق.",
+  "دي بداية جديدة.",
+  "خلي الحلم أكبر كل مرة.",
+  "والأهم... متنسيش تفرحي باللحظة."
+];
+
+function star(i){
+
+  document.getElementById("starMessage").textContent=
+    starMessages[i];
+
+}
+
+
+/* =========================
+   TYPED LETTER
+========================= */
+
+const letterText=
+`النهارده مش مجرد يوم تخرج...
+
+النهارده دليل إن كل تعب، وكل لحظة خوف،
+وكل مرة قلتي فيها "مش هقدر"... عدّت.
+
+أنا مش مبسوط بس عشان اتخرجتي...
+
+أنا مبسوط عشان شفتك توصلي للحظة دي.
+
+أتمنى اللي جاي يكون مليان نجاح،
+وفرحة، وراحة، وحاجات كتير تستاهليها.
+
+مبروك يا حبيبة...
+ومن هنا تبدأ حكاية جديدة. ❤️`;
+
+let letterStarted=false;
+
+const letterObserver=new IntersectionObserver(entries=>{
+
+  entries.forEach(entry=>{
+
+    if(entry.isIntersecting && !letterStarted){
+
+      letterStarted=true;
+
+      let i=0;
+      const box=document.getElementById("typedLetter");
+
+      function type(){
+
+        if(i<letterText.length){
+
+          box.textContent+=letterText.charAt(i);
+          i++;
+
+          setTimeout(type,25);
+
+        }
+
+      }
+
+      type();
+
+    }
+
+  });
+
+},{threshold:.35});
+
+letterObserver.observe(document.getElementById("letter"));
+
+
+/* =========================
+   SECRET
+========================= */
+
+function openSecret(){
+
+  document.getElementById("secretText")
+    .classList.add("show");
+
+}
+
+
+/* =========================
+   GIFT
+========================= */
+
+function openGift(){
+
+  document.getElementById("giftBox")
+    .classList.add("open");
+
+  setTimeout(()=>{
+
+    document.getElementById("giftMessage")
+      .classList.add("show");
+
+  },700);
+
+}
+
+</script>
+
+</body>
+</html>
